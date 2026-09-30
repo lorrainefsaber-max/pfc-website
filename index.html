@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Polytechnic Fishing Corporation | PFC</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f8fa;
+      color: #102a43;
+      line-height: 1.6;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(5, 25, 45, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 3px;
+      font-weight: normal;
+      opacity: 0.8;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #7ed6df;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 20, 35, 0.88),
+          rgba(3, 20, 35, 0.45),
+          rgba(3, 20, 35, 0.2)
+        ),
+        url("images/ship.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      padding: 120px 30px 70px;
+      color: white;
+    }
+
+    .hero-content small {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 7vw, 82px);
+      line-height: 1.05;
+      max-width: 850px;
+      margin: 18px 0;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: white;
+      color: #08263f;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #7ed6df;
+      transform: translateY(-2px);
+    }
+
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 100px 30px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title small {
+      color: #4285a4;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-top: 10px;
+      color: #08263f;
+    }
+
+    /* ================= VIDEO ================= */
+
+    .video-section {
+      background: #071f35;
+      color: white;
+    }
+
+    .video-section .section-title h2 {
+      color: white;
+    }
+
+    .video-section .section-title small {
+      color: #7ed6df;
+    }
+
+    .video-box {
+      max-width: 950px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .video-box video {
+      width: 100%;
+      display: block;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .about-text h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #52606d;
+      margin-bottom: 15px;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products {
+      background: #eef4f7;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 22px;
+    }
+
+    .product h3 {
+      margin-bottom: 8px;
+      color: #08263f;
+    }
+
+    .product p {
+      font-size: 14px;
+      color: #66788a;
+    }
+
+    /* ================= PROCESS ================= */
+
+    .process {
+      background: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .process-card {
+      padding: 30px;
+      border-left: 3px solid #4285a4;
+      background: #f5f8fa;
+    }
+
+    .process-card span {
+      font-size: 13px;
+      color: #4285a4;
+      font-weight: bold;
+    }
+
+    .process-card h3 {
+      margin: 8px 0;
+    }
+
+    /* ================= SUSTAINABILITY ================= */
+
+    .sustainability {
+      color: white;
+
+      background:
+        linear-gradient(rgba(3,25,43,.85), rgba(3,25,43,.85)),
+        url("images/ocean.jpg");
+
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .sustainability h2 {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .sustainability p {
+      max-width: 750px;
+      margin: auto;
+      opacity: .9;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+      background: #eef4f7;
+    }
+
+    .contact-form {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid #d5dde5;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    .contact-form textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      border: none;
+      cursor: pointer;
+      padding: 14px 30px;
+      background: #08263f;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #041a2d;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer h3 {
+      letter-spacing: 2px;
+    }
+
+    footer p {
+      opacity: .7;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 800px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .hero-content {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="nav">
+
+      <div class="logo">
+        PFC
+        <span>POLYTECHNIC FISHING CORPORATION</span>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT US</a></li>
+          <li><a href="#products">PRODUCTS</a></li>
+          <li><a href="#process">OUR PROCESS</a></li>
+          <li><a href="#sustainability">SUSTAINABILITY</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <small>Polytechnic Fishing Corporation</small>
+
+      <h1>
+        Fresh from the Sea,
+        Delivered to You.
+      </h1>
+
+      <p>
+        Providing quality fish products through responsible
+        fishing, proper handling, processing, and reliable distribution.
+      </p>
+
+      <a href="#products" class="btn">
+        Explore Our Products
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- VIDEO -->
+
+  <section class="video-section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <small>Our Operations</small>
+
+        <h2>From the Sea to Your Table</h2>
+
+        <p>
+          Take a closer look at how our fish products
+          move through our operations and distribution process.
+        </p>
+
+      </div>
+
+      <div class="video-box">
+
+        <!-- PALITAN ANG VIDEO FILE -->
+        <video controls>
+          <source src="videos/pfc-video.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <div class="container about-grid">
+
+      <div class="about-image">
+        <img src="images/fishing.jpg" alt="Fishing operations">
+      </div>
+
+      <div class="about-text">
+
+        <h2>About PFC</h2>
+
+        <p>
+          Polytechnic Fishing Corporation (PFC) is a
+          fishing and fish distribution company focused
+          on providing quality fish products.
+        </p>
+
+        <p>
+          Our operations cover fishing, proper handling,
+          processing, packaging, inventory management,
+          and distribution of fish products.
+        </p>
+
+        <p>
+          We aim to provide reliable products while
+          maintaining responsible practices throughout
+          our operations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+
+  <section class="products" id="products">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <small>What We Offer</small>
+
+        <h2>Our Products</h2>
+
+      </div>
+
+      <div class="product-grid">
+
+        <div class="product">
+
+          <img src="images/fresh-fish.jpg" alt="Fresh Fish">
+
+          <div class="product-content">
+            <h3>Fresh Fish</h3>
+            <p>
+              Quality fish products prepared for
+              distribution while maintaining freshness.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <img src="images/frozen-fish.jpg" alt="Frozen Fish">
+
+          <div class="product-content">
+            <h3>Frozen Fish</h3>
+            <p>
+              Properly handled frozen fish products
+              prepared for longer storage and distribution.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <img src="images/canned-fish.jpg" alt="Canned Fish">
+
+          <div class="product-content">
+            <h3>Canned Fish</h3>
+            <p>
+              Processed and packaged fish products
+              prepared for convenient consumption.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <img src="images/patis.jpg" alt="Fish Sauce">
+
+          <div class="product-content">
+            <h3>Fish Sauce / Patis</h3>
+            <p>
+              Fish sauce product prepared and packaged
+              for distribution.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROCESS -->
+
+  <section class="process" id="process">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <small>How We Operate</small>
+
+        <h2>Our Process</h2>
+
+      </div>
+
+
+      <div class="process-grid">
+
+        <div class="process-card">
+          <span>01</span>
+          <h3>Fishing & Sourcing</h3>
+          <p>
+            Fish are sourced through our fishing operations.
+          </p>
+        </div>
+
+
+        <div class="process-card">
+          <span>02</span>
+          <h3>Handling</h3>
+          <p>
+            Proper handling is practiced to maintain
+            product quality.
+          </p>
+        </div>
+
+
+        <div class="process-card">
+          <span>03</span>
+          <h3>Processing</h3>
+          <p>
+            Selected fish products undergo appropriate
+            processing.
+          </p>
+        </div>
+
+
+        <div class="process-card">
+          <span>04</span>
+          <h3>Packaging</h3>
+          <p>
+            Products are packaged according to their
+            specific requirements.
+          </p>
+        </div>
+
+
+        <div class="process-card">
+          <span>05</span>
+          <h3>Distribution</h3>
+          <p>
+            Products are distributed through our
+            distribution network.
+          </p>
+        </div>
+
+
+        <div class="process-card">
+          <span>06</span>
+          <h3>Customers</h3>
+          <p>
+            Products are delivered to retailers
+            and customers.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SUSTAINABILITY -->
+
+  <section class="sustainability" id="sustainability">
+
+    <div class="container">
+
+      <h2>Responsible Fishing</h2>
+
+      <p>
+        PFC recognizes the importance of responsible
+        fishing and proper resource management. We aim
+        to practice proper fish handling, reduce waste,
+        and support responsible practices throughout
+        our operations.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <small>Contact Us</small>
+
+        <h2>Get in Touch</h2>
+
+      </div>
+
+
+      <form class="contact-form">
+
+        <input
+          type="text"
+          placeholder="Your Name"
+          required
+        >
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          required
+        >
+
+        <textarea
+          placeholder="Your Message"
+          required
+        ></textarea>
+
+        <button type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>POLYTECHNIC FISHING CORPORATION</h3>
+
+    <p>
+      From the Sea to Your Table.
+    </p>
+
+    <p>
+      © 2026 PFC. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    document.querySelector(".contact-form").addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      alert("Thank you for contacting Polytechnic Fishing Corporation!");
+
+    });
+
+  </script>
+
+</body>
+</html>
