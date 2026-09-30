@@ -20,7 +20,7 @@ body {
     background: #f5f8fb;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVIGATION ===== */
 
 nav {
     position: sticky;
@@ -50,7 +50,6 @@ nav {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 15px;
 }
 
 .logo-text strong {
@@ -95,7 +94,6 @@ nav {
             rgba(2,22,42,.2)
         ),
         url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1800&q=85");
-
     background-size: cover;
     background-position: center;
     color: white;
@@ -227,6 +225,7 @@ section {
 .video-container video {
     display: block;
     width: 100%;
+    height: auto;
 }
 
 /* ===== PRODUCTS ===== */
@@ -338,7 +337,6 @@ section {
             rgba(4,28,50,.93)
         ),
         url("https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?auto=format&fit=crop&w=1800&q=85");
-
     background-size: cover;
     background-position: center;
 }
@@ -498,28 +496,28 @@ footer p {
 <a href="#home" class="logo">
 
 <div class="logo-icon">
-    PFC
+PFC
 </div>
 
 <div class="logo-text">
-    <strong>PFC</strong>
-    <span>POLYTECHNIC FISHING CORPORATION</span>
+<strong>PFC</strong>
+<span>POLYTECHNIC FISHING CORPORATION</span>
 </div>
 
 </a>
 
 <div class="nav-links">
-    <a href="#home">HOME</a>
-    <a href="#about">ABOUT US</a>
-    <a href="#products">PRODUCTS</a>
-    <a href="#operations">OUR OPERATIONS</a>
-    <a href="#contact">CONTACT</a>
+<a href="#home">HOME</a>
+<a href="#about">ABOUT US</a>
+<a href="#products">PRODUCTS</a>
+<a href="#operations">OUR OPERATIONS</a>
+<a href="#contact">CONTACT</a>
 </div>
 
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- ================= HOME ================= -->
 
 <section class="hero" id="home">
 
@@ -528,7 +526,7 @@ footer p {
 <small>POLYTECHNIC FISHING CORPORATION</small>
 
 <h1>
-Quality Fish Products,
+Quality Fish Products,<br>
 Ready for You.
 </h1>
 
@@ -550,7 +548,7 @@ Order / Inquire
 </section>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- ================= ABOUT US ================= -->
 
 <section class="about" id="about">
 
@@ -569,7 +567,7 @@ Learn more about Polytechnic Fishing Corporation.
 <img
 class="about-image"
 src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?auto=format&fit=crop&w=1000&q=85"
-alt="Fishing">
+alt="Fishing operations">
 
 <div class="about-text">
 
@@ -582,7 +580,7 @@ fish products to customers.
 </p>
 
 <p>
-Our products cover <strong>fresh fish, frozen fish,
+Our products include <strong>fresh fish, frozen fish,
 canned fish, and fish sauce or patis.</strong>
 </p>
 
@@ -614,18 +612,11 @@ Take a look at our fishing and distribution operations.
 
 <div class="video-container">
 
-<!--
-UPLOAD YOUR VIDEO TO THE SAME GITHUB REPOSITORY
-AND NAME IT:
-
-pfc-video.mp4
--->
-
-<video controls>
+<video controls preload="metadata">
 
 <source src="pfc-video.mp4" type="video/mp4">
 
-Your browser does not support video.
+Your browser does not support video playback.
 
 </video>
 
@@ -649,11 +640,8 @@ fish products for customers and distribution.
 
 </div>
 
-
 <div class="product-grid">
 
-
-<!-- FRESH FISH -->
 
 <div class="product-card">
 
@@ -679,8 +667,6 @@ Price Upon Inquiry
 </div>
 
 
-<!-- YELLOWFIN -->
-
 <div class="product-card">
 
 <img
@@ -704,8 +690,6 @@ and distribution.
 
 </div>
 
-
-<!-- MACKEREL -->
 
 <div class="product-card">
 
@@ -731,8 +715,6 @@ and preparation.
 </div>
 
 
-<!-- CANNED -->
-
 <div class="product-card">
 
 <img
@@ -757,8 +739,6 @@ product line.
 </div>
 
 
-<!-- FISH SAUCE -->
-
 <div class="product-card">
 
 <img
@@ -782,7 +762,6 @@ Foods product line.
 
 </div>
 
-
 </div>
 
 </section>
@@ -801,7 +780,6 @@ Our process from sourcing fish to product distribution.
 </p>
 
 </div>
-
 
 <div class="operation-grid">
 
@@ -876,7 +854,6 @@ and retail channels.
 <form id="orderForm">
 
 <div class="form-grid">
-
 
 <div class="form-group">
 
@@ -961,21 +938,16 @@ placeholder="Write your inquiry or special request..."></textarea>
 
 </div>
 
-
 </div>
 
 
 <div class="total">
-
 Estimated Total: ₱<span id="total">0</span>
-
 </div>
 
 
 <button class="submit" type="submit">
-
 SEND ORDER / INQUIRY
-
 </button>
 
 </form>
@@ -1041,89 +1013,70 @@ Quality fish products and reliable distribution.
 
 <script>
 
-/* ================= TOTAL CALCULATOR ================= */
-
-const product =
-document.getElementById("product");
-
-const quantity =
-document.getElementById("quantity");
-
-const total =
-document.getElementById("total");
-
+const product = document.getElementById("product");
+const quantity = document.getElementById("quantity");
+const total = document.getElementById("total");
 
 function calculateTotal() {
 
-const selected =
-product.options[product.selectedIndex];
+    const selected =
+        product.options[product.selectedIndex];
 
-const price =
-Number(selected.dataset.price || 0);
+    const price =
+        Number(selected.dataset.price || 0);
 
-const qty =
-Number(quantity.value || 1);
+    const qty =
+        Number(quantity.value || 1);
 
-total.textContent =
-(price * qty).toLocaleString();
+    total.textContent =
+        (price * qty).toLocaleString();
 
 }
 
-
 product.addEventListener(
-"change",
-calculateTotal
+    "change",
+    calculateTotal
 );
 
 quantity.addEventListener(
-"input",
-calculateTotal
+    "input",
+    calculateTotal
 );
 
-
-/* ================= ORDER / INQUIRY ================= */
 
 document
 .getElementById("orderForm")
 .addEventListener("submit", function(event) {
 
-event.preventDefault();
+    event.preventDefault();
 
-const name =
-document.getElementById("name").value;
+    const name =
+        document.getElementById("name").value;
 
-const contact =
-document.getElementById("contact").value;
+    const contact =
+        document.getElementById("contact").value;
 
-const selected =
-product.options[product.selectedIndex];
+    const selected =
+        product.options[product.selectedIndex];
 
-const productName =
-selected.value;
+    const productName =
+        selected.value;
 
-const qty =
-quantity.value;
+    const qty =
+        quantity.value;
 
-const message =
-document.getElementById("message").value;
+    const estimatedTotal =
+        total.textContent;
 
-const estimatedTotal =
-total.textContent;
-
-
-alert(
-"Thank you, " + name +
-"!\n\n" +
-
-"Product: " + productName +
-"\nQuantity: " + qty +
-"\nEstimated Total: ₱" +
-estimatedTotal +
-
-"\n\nContact: " + contact +
-
-"\n\nYour inquiry has been received."
-);
+    alert(
+        "Thank you, " + name +
+        "!\n\n" +
+        "Product: " + productName +
+        "\nQuantity: " + qty +
+        "\nEstimated Total: ₱" + estimatedTotal +
+        "\n\nContact: " + contact +
+        "\n\nYour inquiry has been prepared."
+    );
 
 });
 
