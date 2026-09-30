@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polytechnic Fishing Corporation | PFC</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{--navy:#0a2a55;--navy2:#071f3f;--blue:#1a66b3;--light:#eef4fa;--text:#1b2b3f;--muted:#5b6b7d}
+body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1150px;margin:auto;padding:0 24px}
+ 
+/* header */
+header{position:fixed;top:0;width:100%;z-index:100;background:var(--navy);box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.nav{max-width:1150px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;cursor:pointer}
+.logo b{font-size:26px;letter-spacing:2px;line-height:1}
+.logo small{display:block;font-size:8px;letter-spacing:1.5px;opacity:.8}
+.logo .mark{font-size:30px}
+nav ul{list-style:none;display:flex;gap:26px}
+nav a{color:#fff;font-size:13px;cursor:pointer;padding:6px 0;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover,nav a.active{color:#8fd3ff;border-color:#8fd3ff}
+.burger{display:none;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+ 
+/* pages */
+.page{display:none;padding-top:64px;animation:fade .4s}
+.page.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+ 
+/* hero */
+.hero{min-height:560px;display:flex;align-items:center;color:#fff;
+background:linear-gradient(90deg,rgba(5,25,50,.75),rgba(5,25,50,.25)),url("images/ship.jpg") center/cover,var(--blue)}
+.hero h1{font-size:clamp(40px,6vw,66px);line-height:1.08;margin-bottom:18px}
+.hero p{max-width:480px;margin-bottom:28px;font-size:17px}
+.btn{display:inline-block;padding:12px 26px;border-radius:30px;font-weight:bold;font-size:14px;cursor:pointer;border:2px solid #fff;transition:.25s;background:#fff;color:var(--navy)}
+.btn:hover{transform:translateY(-2px);background:#8fd3ff;border-color:#8fd3ff}
+.btn.ghost{background:transparent;color:#fff;margin-left:10px}
+.btn.ghost:hover{background:#fff;color:var(--navy)}
+.btn.dark{background:var(--navy);color:#fff;border-color:var(--navy);border-radius:6px}
+.btn.dark:hover{background:var(--blue);border-color:var(--blue)}
+ 
+/* banners */
+.banner{padding:70px 0 50px;color:#fff;background:linear-gradient(rgba(5,25,50,.65),rgba(5,25,50,.65)),var(--bg) center/cover,var(--navy)}
+.banner h1{font-size:44px}
+.crumb{font-size:13px;opacity:.85}
+.crumb a{cursor:pointer}
+ 
+section.block{padding:60px 0}
+.center{text-align:center}
+h2.title{font-size:32px;color:var(--navy)}
+.sub{color:var(--muted);margin-bottom:34px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(10,42,85,.12);transition:.3s}
+.card:hover{transform:translateY(-6px)}
+.card .img{height:170px;background:var(--light) center/cover}
+.card .body{padding:16px}
+.card h3{color:var(--navy);font-size:17px;margin-bottom:6px}
+.card p{font-size:13px;color:var(--muted)}
+.price{margin-top:8px;font-weight:bold;font-size:19px;color:var(--blue)}
+.go{float:right;background:var(--navy);color:#fff;width:24px;height:24px;border-radius:50%;text-align:center;font-size:13px;line-height:24px}
+ 
+.strip{background:var(--light);padding:26px 0}
+.strip .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px;font-weight:bold;color:var(--navy);font-size:14px}
+.strip span{font-size:26px;margin-right:8px;vertical-align:middle}
+ 
+.connect{color:#fff;padding:60px 0;text-align:center;background:linear-gradient(rgba(5,25,50,.6),rgba(5,25,50,.6)),url("images/ocean.jpg") center/cover,var(--blue)}
+.connect h2{font-size:30px;margin-bottom:8px}
+.connect p{margin-bottom:20px}
+ 
+/* about */
+.two{display:grid;grid-template-columns:1.5fr 1fr;gap:34px;align-items:start}
+.two h2{color:var(--navy);margin-bottom:14px}
+.two p{color:var(--muted);margin-bottom:14px}
+.side{background:var(--light);border-radius:12px;padding:16px}
+.side .pic{height:210px;border-radius:8px;background:url("images/fishing.jpg") center/cover,var(--blue);margin-bottom:14px}
+.side h3{color:var(--navy);border-bottom:2px solid #cfe0f2;padding-bottom:4px;margin:10px 0 6px}
+.side p{font-size:13px}
+ 
+/* services */
+.services{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.svc{background:var(--light);border-radius:10px;padding:18px 6px;text-align:center;font-size:13px;color:var(--navy);font-weight:bold}
+.svc span{display:block;font-size:30px}
+ 
+/* order */
+.order-box{max-width:850px;margin:auto;background:#fff;padding:34px;border-radius:12px;box-shadow:0 10px 35px rgba(10,42,85,.12)}
+.oi{display:grid;grid-template-columns:1fr 90px 110px;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #e1e7eb}
+.oi h3{font-size:16px;color:var(--navy)}
+.oi p{font-size:12px;color:var(--muted)}
+.oi b{color:var(--blue)}
+.qty{width:100%;padding:9px;border:1px solid #cdd8e3;border-radius:6px;text-align:center}
+.total{margin:24px 0;padding:18px;background:var(--navy);color:#fff;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+.total strong{font-size:24px}
+input,textarea{width:100%;padding:13px;margin-bottom:14px;border:1px solid #cdd8e3;border-radius:6px;font-family:inherit;font-size:14px}
+textarea{height:120px;resize:vertical}
+.msg{display:none;margin-top:14px;padding:14px;border-radius:8px;background:#e3f4ea;color:#17603a;font-size:14px;white-space:pre-line}
+ 
+/* process */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;text-align:center}
+.step{position:relative;padding:8px}
+.step .n{display:inline-block;width:24px;height:24px;line-height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:bold}
+.step .ic{font-size:40px;margin:8px 0}
+.step h3{color:var(--navy);font-size:15px;margin-bottom:6px}
+.step p{font-size:12px;color:var(--muted)}
+.step:not(:last-child)::after{content:"›";position:absolute;right:-10px;top:50px;font-size:28px;color:#8aa4c2}
+.video-box{max-width:900px;margin:40px auto 0;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 15px 40px rgba(0,0,0,.3)}
+.video-box video{width:100%;display:block}
+ 
+/* quality */
+.badge{background:var(--navy);color:#fff;border-radius:12px;padding:22px;text-align:center}
+.badge .chk{font-size:46px;color:#8fd3ff}
+.tag{color:var(--blue);font-weight:bold;font-size:20px}
+.pics{height:230px;border-radius:12px;margin-bottom:14px;background:url("images/fresh-fish.jpg") center/cover,var(--blue)}
+ 
+/* contact */
+.info p{margin-bottom:12px;color:var(--muted)}
+.info b{color:var(--navy)}
+ 
+/* footer */
+footer{background:var(--navy2);color:#fff;padding:44px 0 20px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.4fr;gap:30px}
+footer h4{margin-bottom:10px;font-size:14px}
+footer li{list-style:none;font-size:13px;opacity:.85;margin-bottom:4px;cursor:pointer}
+footer li:hover{color:#8fd3ff}
+footer .c{font-size:13px;opacity:.85;margin-bottom:6px}
+.copy{text-align:center;font-size:12px;opacity:.6;margin-top:28px}
+ 
+@media(max-width:900px){
+ .grid4{grid-template-columns:1fr 1fr}
+ .services{grid-template-columns:repeat(4,1fr)}
+ .steps{grid-template-columns:1fr 1fr 1fr}.step::after{display:none}
+ .two{grid-template-columns:1fr}
+ .fgrid{grid-template-columns:1fr}
+ .burger{display:block}
+ nav{position:absolute;top:100%;left:0;width:100%;background:var(--navy);display:none}
+ nav.open{display:block}
+ nav ul{flex-direction:column;gap:0;padding:10px 24px}
+ nav li{padding:8px 0}
+}
+@media(max-width:560px){
+ .grid4{grid-template-columns:1fr}
+ .services{grid-template-columns:repeat(2,1fr)}
+ .steps{grid-template-columns:1fr 1fr}
+ .oi{grid-template-columns:1fr 80px}.oi>b{display:none}
+ .btn.ghost{margin:10px 0 0}
+}
+</style>
+</head>
+<body>
+ 
+<header>
+ <div class="nav">
+  <div class="logo" data-page="home"><span class="mark">🌊</span><div><b>PFC</b><small>POLYTECHNIC FISHING CORPORATION</small></div></div>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+  <nav id="menu"><ul>
+   <li><a data-page="home">Home</a></li>
+   <li><a data-page="about">About Us</a></li>
+   <li><a data-page="products">Products</a></li>
+   <li><a data-page="process">Our Process</a></li>
+   <li><a data-page="sustainability">Sustainability</a></li>
+   <li><a data-page="quality">Quality</a></li>
+   <li><a data-page="contact">Contact</a></li>
+  </ul></nav>
+ </div>
+</header>
+ 
+<!-- HOME -->
+<main>
+<div class="page" id="home">
+ <div class="hero"><div class="wrap">
+  <h1>From the Sea<br>to Your Table.</h1>
+  <p>Polytechnic Fishing Corporation delivers quality fish and seafood products through reliable sourcing, proper handling, and efficient distribution.</p>
+  <a class="btn" data-page="products">Explore Our Products</a><a class="btn ghost" data-page="about">Learn More</a>
+ </div></div>
+ <section class="block center"><div class="wrap">
+  <h2 class="title">Our Products</h2><p class="sub">Fresh. Quality. For Everyone.</p>
+  <div class="grid4" style="text-align:left">
+   <div class="card" data-page="products" style="cursor:pointer"><div class="img" style="background-image:url(images/fresh-fish.jpg)"></div><div class="body"><h3>Fresh Fish<span class="go">›</span></h3></div></div>
+   <div class="card" data-page="products" style="cursor:pointer"><div class="img" style="background-image:url(images/frozen-fish.jpg)"></div><div class="body"><h3>Frozen Fish<span class="go">›</span></h3></div></div>
+   <div class="card" data-page="products" style="cursor:pointer"><div class="img" style="background-image:url(images/canned-fish.jpg)"></div><div class="body"><h3>Canned Fish<span class="go">›</span></h3></div></div>
+   <div class="card" data-page="products" style="cursor:pointer"><div class="img" style="background-image:url(images/patis.jpg)"></div><div class="body"><h3>Fish Sauce / Patis<span class="go">›</span></h3></div></div>
+  </div>
+ </div></section>
+ <div class="strip"><div class="wrap"><div><span>🛡️</span>Quality Products</div><div><span>🚚</span>Reliable Distribution</div><div><span>👥</span>Customer Satisfaction</div></div></div>
+ <div class="connect"><div class="wrap"><h2>We connect the sea to the market.</h2><p>Supporting fishermen, businesses, and communities through sustainable and reliable seafood supply.</p><a class="btn ghost" data-page="about" style="margin:0">About PFC</a></div></div>
+</div>
+ 
+<!-- ABOUT -->
+<div class="page" id="about">
+ <div class="banner" style="--bg:url(images/ship.jpg)"><div class="wrap"><h1>About Us</h1><div class="crumb"><a data-page="home">Home</a> &gt; About Us</div></div></div>
+ <section class="block"><div class="wrap two">
+  <div>
+   <h2>Polytechnic Fishing Corporation</h2>
+   <p>Polytechnic Fishing Corporation (PFC) is a fishing and seafood distribution company that provides different fish and seafood products to meet the needs of consumers and businesses.</p>
+   <p>Our operations begin with the sourcing of fish from the sea and continue through proper handling, processing, packaging, and distribution. PFC focuses on maintaining product quality and freshness while ensuring that each product reaches customers safely and efficiently.</p>
+   <p>Our goal is to provide accessible and quality seafood products while building a reliable connection between fishermen, markets, retailers, and consumers.</p>
+  </div>
+  <div class="side"><div class="pic"></div>
+   <h3>Mission</h3><p>To provide fresh, quality, and accessible fish and seafood products through responsible sourcing, proper handling, and efficient distribution while maintaining customer satisfaction and supporting the fishing industry.</p>
+   <h3>Vision</h3><p>To become a trusted seafood company known for quality products, reliable distribution, and responsible practices in the fishing industry.</p>
+  </div>
+ </div></section>
+</div>
+ 
+<!-- PRODUCTS -->
+<div class="page" id="products">
+ <div class="banner" style="--bg:url(images/fresh-fish.jpg)"><div class="wrap"><h1>Our Products</h1><div class="crumb"><a data-page="home">Home</a> &gt; Products</div></div></div>
+ <section class="block"><div class="wrap">
+  <h2 class="title" style="margin-bottom:24px">Seafood Products</h2>
+  <div class="grid4">
+   <div class="card"><div class="img" style="background-image:url(images/fresh-fish.jpg)"></div><div class="body"><h3>Fresh Fish</h3><p>Freshly sourced fish intended for consumers, retailers, and food businesses.</p><div class="price">Price upon inquiry</div></div></div>
+   <div class="card"><div class="img" style="background-image:url(images/frozen-fish.jpg)"></div><div class="body"><h3>Frozen Yellowfin Tuna</h3><p>Properly handled frozen yellowfin tuna prepared for distribution.</p><div class="price">₱260</div></div></div>
+   <div class="card"><div class="img" style="background-image:url(images/frozen-fish.jpg)"></div><div class="body"><h3>Frozen Mackerel Tuna</h3><p>Properly handled frozen mackerel tuna prepared for distribution.</p><div class="price">₱240</div></div></div>
+   <div class="card"><div class="img" style="background-image:url(images/canned-fish.jpg)"></div><div class="body"><h3>Polytechnic Canned Fish</h3><p>Convenient, ready-to-store tuna suitable for households and businesses.</p><div class="price">₱50</div></div></div>
+   <div class="card"><div class="img" style="background-image:url(images/patis.jpg)"></div><div class="body"><h3>Polytechnic Fish Sauce</h3><p>A traditional fish-based condiment (patis) commonly used in Filipino cooking.</p><div class="price">₱35</div></div></div>
+  </div>
+ </div></section>
+ <section class="block" style="padding-top:0"><div class="wrap">
+  <h2 class="title" style="font-size:24px;margin-bottom:20px">Our Services</h2>
+  <div class="services">
+   <div class="svc"><span>🎣</span>Fish sourcing</div><div class="svc"><span>🔪</span>Fish processing</div><div class="svc"><span>🧊</span>Product handling</div><div class="svc"><span>📦</span>Packaging</div><div class="svc"><span>📋</span>Inventory management</div><div class="svc"><span>📍</span>Product tracking</div><div class="svc"><span>🚚</span>Seafood distribution</div>
+  </div>
+ </div></section>
+ <section class="block" style="background:var(--light)" id="order"><div class="wrap">
+  <div class="center"><h2 class="title">Order / Inquiry</h2><p class="sub">Select quantities and your estimated total is calculated automatically.</p></div>
+  <div class="order-box">
+   <div class="oi"><div><h3>Fresh Fish</h3><p>Price upon inquiry</p></div><b>Inquiry</b><input class="qty" type="number" min="0" value="0" data-price="0" data-name="Fresh Fish"></div>
+   <div class="oi"><div><h3>Frozen Yellowfin Tuna</h3><p>₱260 per unit</p></div><b>₱260</b><input class="qty" type="number" min="0" value="0" data-price="260" data-name="Frozen Yellowfin Tuna"></div>
+   <div class="oi"><div><h3>Frozen Mackerel Tuna</h3><p>₱240 per unit</p></div><b>₱240</b><input class="qty" type="number" min="0" value="0" data-price="240" data-name="Frozen Mackerel Tuna"></div>
+   <div class="oi"><div><h3>Polytechnic Canned Fish</h3><p>₱50 per unit</p></div><b>₱50</b><input class="qty" type="number" min="0" value="0" data-price="50" data-name="Polytechnic Canned Fish"></div>
+   <div class="oi"><div><h3>Polytechnic Fish Sauce</h3><p>₱35 per unit</p></div><b>₱35</b><input class="qty" type="number" min="0" value="0" data-price="35" data-name="Polytechnic Fish Sauce"></div>
+   <div class="total"><span>Estimated Total</span><strong id="total">₱0</strong></div>
+   <form id="orderForm">
+    <input type="text" id="cName" placeholder="Your Name" required>
+    <input type="email" id="cEmail" placeholder="Your Email" required>
+    <textarea id="cMsg" placeholder="Additional message or order details"></textarea>
+    <button class="btn dark" type="submit">Submit Order / Inquiry</button>
+   </form>
+   <div class="msg" id="orderMsg"></div>
+  </div>
+ </div></section>
+</div>
+ 
+<!-- PROCESS -->
+<div class="page" id="process">
+ <div class="banner" style="--bg:url(images/ocean.jpg)"><div class="wrap"><h1>Our Process</h1><div class="crumb"><a data-page="home">Home</a> &gt; Our Process</div></div></div>
+ <section class="block"><div class="wrap">
+  <div class="steps">
+   <div class="step"><span class="n">1</span><div class="ic">🎣</div><h3>Fishing &amp; Sourcing</h3><p>Fish are sourced from the sea through fishing operations and suppliers.</p></div>
+   <div class="step"><span class="n">2</span><div class="ic">🐟</div><h3>Receiving &amp; Handling</h3><p>The fish are received and properly handled to maintain their quality.</p></div>
+   <div class="step"><span class="n">3</span><div class="ic">🔪</div><h3>Processing</h3><p>Products are prepared according to their type: fresh, frozen, canned, or fish sauce.</p></div>
+   <div class="step"><span class="n">4</span><div class="ic">📦</div><h3>Packaging</h3><p>Products are properly packaged for protection and distribution.</p></div>
+   <div class="step"><span class="n">5</span><div class="ic">🚚</div><h3>Distribution</h3><p>Products are transported to supermarkets, retailers, and other customers.</p></div>
+   <div class="step"><span class="n">6</span><div class="ic">🛒</div><h3>Customers</h3><p>Seafood products reach consumers and businesses ready for purchase and use.</p></div>
+  </div>
+  <div class="video-box"><video controls preload="metadata"><source src="pfc-video.mp4" type="video/mp4">Your browser does not support the video element.</video></div>
+ </div></section>
+</div>
+ 
+<!-- SUSTAINABILITY -->
+<div class="page" id="sustainability">
+ <div class="banner" style="--bg:url(images/ocean.jpg)"><div class="wrap"><h1>Sustainability</h1><div class="crumb"><a data-page="home">Home</a> &gt; Sustainability</div></div></div>
+ <section class="block"><div class="wrap center">
+  <h2 class="title">Caring for the Sea</h2><p class="sub">Responsible practices throughout our operations.</p>
+  <div class="grid4" style="grid-template-columns:repeat(3,1fr);text-align:left">
+   <div class="card"><div class="body"><h3>🌊 Responsible Fishing</h3><p>We source fish through responsible practices that support the long-term health of the fishing industry.</p></div></div>
+   <div class="card"><div class="body"><h3>♻️ Proper Handling</h3><p>Careful handling and packaging help reduce waste from the sea to the market.</p></div></div>
+   <div class="card"><div class="body"><h3>🤝 Community Support</h3><p>We build reliable connections between fishermen, retailers, and consumers.</p></div></div>
+  </div>
+ </div></section>
+</div>
+ 
+<!-- QUALITY -->
+<div class="page" id="quality">
+ <div class="banner" style="--bg:url(images/fresh-fish.jpg)"><div class="wrap"><h1>Quality &amp; Freshness</h1><div class="crumb"><a data-page="home">Home</a> &gt; Quality &amp; Freshness</div></div></div>
+ <section class="block"><div class="wrap two" style="grid-template-columns:1fr 1fr">
+  <div><h2>Quality You Can Trust</h2>
+   <p>At PFC, maintaining the quality of our seafood products is an important part of our operations. From sourcing and handling to packaging and distribution, we aim to ensure that our products are properly managed before reaching customers.</p>
+   <p class="tag">Freshness. Quality. Reliability.</p></div>
+  <div><div class="pics"></div><div class="badge"><div class="chk">✔</div><b>Freshness · Quality · Reliability</b></div></div>
+ </div></section>
+</div>
+ 
+<!-- CONTACT -->
+<div class="page" id="contact">
+ <div class="banner" style="--bg:url(images/ocean.jpg)"><div class="wrap"><h1>Contact Us</h1><div class="crumb"><a data-page="home">Home</a> &gt; Contact</div></div></div>
+ <section class="block"><div class="wrap two" style="grid-template-columns:1fr 1fr">
+  <div class="info"><h2>Get in Touch with PFC</h2>
+   <p>Have questions about our products or services? Contact Polytechnic Fishing Corporation for inquiries and business opportunities.</p>
+   <p>📍 <b>Navotas, Philippines</b></p><p>✉️ <b>pfc@company.com</b></p><p>📞 <b>+63 912 345 6789</b></p><p>👍 <b>Facebook: Polytechnic Fishing Corporation</b></p>
+   <p>🕒 <b>Business Hours</b><br>Monday – Saturday, 8:00 AM – 5:00 PM</p></div>
+  <div><form id="contactForm">
+   <input type="text" placeholder="Name" required><input type="email" placeholder="Email" required><textarea placeholder="Message" required></textarea>
+   <button class="btn dark" type="submit" style="width:100%">Send Message</button></form>
+   <div class="msg" id="contactMsg"></div></div>
+ </div></section>
+</div>
+</main>
+ 
+<footer><div class="wrap">
+ <div class="fgrid">
+  <div><div class="logo" data-page="home"><span class="mark">🌊</span><div><b>PFC</b><small>POLYTECHNIC FISHING CORPORATION</small></div></div></div>
+  <div><h4>Quick Links</h4><ul>
+   <li data-page="home">Home</li><li data-page="about">About Us</li><li data-page="products">Products</li><li data-page="process">Our Process</li><li data-page="sustainability">Sustainability</li><li data-page="contact">Contact</li></ul></div>
+  <div><h4>Contact Us</h4><div class="c">📍 Navotas, Philippines</div><div class="c">✉️ pfc@company.com</div><div class="c">📞 +63 912 345 6789</div><div class="c">👍 Facebook: Polytechnic Fishing Corporation</div></div>
+ </div>
+ <div class="copy">© 2026 Polytechnic Fishing Corporation. All rights reserved.</div>
+</div></footer>
+ 
+<script>
+/* PAGE NAVIGATION */
+const pages=[...document.querySelectorAll('.page')];
+const links=[...document.querySelectorAll('nav a')];
+function show(id,push){
+  if(!document.getElementById(id)) id='home';
+  pages.forEach(p=>p.classList.toggle('active',p.id===id));
+  links.forEach(a=>a.classList.toggle('active',a.dataset.page===id));
+  document.getElementById('menu').classList.remove('open');
+  if(push!==false) history.pushState(null,'','#'+id);
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-page]');
+  if(t){e.preventDefault();show(t.dataset.page);}
+});
+window.addEventListener('popstate',()=>show(location.hash.slice(1)||'home',false));
+document.getElementById('burger').onclick=()=>document.getElementById('menu').classList.toggle('open');
+show(location.hash.slice(1)||'home',false);
+ 
+/* AUTOMATIC TOTAL */
+const qtys=document.querySelectorAll('.qty'),totalEl=document.getElementById('total');
+function calc(){
+  let t=0;qtys.forEach(i=>t+=(Math.max(0,Number(i.value))||0)*(Number(i.dataset.price)||0));
+  totalEl.textContent='₱'+t.toLocaleString();return t;
+}
+qtys.forEach(i=>i.addEventListener('input',calc));
+ 
+/* ORDER FORM */
+document.getElementById('orderForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const items=[];
+  qtys.forEach(i=>{const q=Number(i.value)||0;if(q>0)items.push(i.dataset.name+' x '+q);});
+  const box=document.getElementById('orderMsg');
+  box.style.display='block';
+  if(!items.length){box.style.background='#fdeaea';box.style.color='#8a1f1f';box.textContent='Please select at least one product quantity.';return;}
+  box.style.background='#e3f4ea';box.style.color='#17603a';
+  box.textContent='Thank you for your inquiry, '+document.getElementById('cName').value+'!\n\nSelected Products:\n'+items.join('\n')+'\n\nEstimated Total: '+totalEl.textContent+'\n\nPFC will review your order/inquiry.';
+  e.target.reset();qtys.forEach(i=>i.value=0);calc();
+});
+ 
+/* CONTACT FORM */
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const b=document.getElementById('contactMsg');
+  b.style.display='block';b.textContent='Thank you for contacting Polytechnic Fishing Corporation! We will get back to you soon.';
+  e.target.reset();
+});
+</script>
+</body>
+</html>
+ 
