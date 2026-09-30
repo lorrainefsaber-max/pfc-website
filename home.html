@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Polytechnic Fishing Corporation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172b3a;
+    background: #f5f8fb;
+}
+
+/* ===== NAVBAR ===== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #061c33;
+    padding: 14px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.logo-text strong {
+    display: block;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.logo-text span {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    opacity: .8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #62c8ff;
+}
+
+/* ===== HERO ===== */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,22,42,.88),
+            rgba(2,22,42,.48),
+            rgba(2,22,42,.2)
+        ),
+        url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1800&q=85");
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero-content {
+    width: 85%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.hero small {
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    line-height: 1;
+    margin: 20px 0;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #e7f0f7;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 25px;
+    border-radius: 5px;
+    background: white;
+    color: #06233e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn.blue {
+    background: #087fc5;
+    color: white;
+    margin-left: 10px;
+}
+
+/* ===== GENERAL ===== */
+
+section {
+    padding: 90px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    color: #06233e;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    max-width: 650px;
+    margin: auto;
+    color: #68798a;
+    line-height: 1.6;
+}
+
+/* ===== ABOUT ===== */
+
+.about {
+    background: white;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.about-text h3 {
+    color: #087fc5;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.about-text p {
+    line-height: 1.8;
+    color: #596b7b;
+    margin-bottom: 15px;
+}
+
+/* ===== VIDEO ===== */
+
+.video-section {
+    background: #06233e;
+    color: white;
+}
+
+.video-section .section-title h2 {
+    color: white;
+}
+
+.video-section .section-title p {
+    color: #c7d7e5;
+}
+
+.video-container {
+    max-width: 950px;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    background: black;
+    box-shadow: 0 20px 45px rgba(0,0,0,.4);
+}
+
+.video-container video {
+    display: block;
+    width: 100%;
+}
+
+/* ===== PRODUCTS ===== */
+
+.products {
+    background: #f5f8fb;
+}
+
+.product-grid {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 7px 25px rgba(0,0,0,.08);
+    transition: .25s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 22px;
+}
+
+.product-info h3 {
+    color: #06233e;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.product-info p {
+    color: #68798a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.price {
+    color: #087fc5;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+/* ===== OPERATIONS ===== */
+
+.operations {
+    background: white;
+}
+
+.operation-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.operation {
+    background: #f2f7fa;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #087fc5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto 15px;
+    font-weight: bold;
+}
+
+.operation h3 {
+    color: #06233e;
+    margin-bottom: 10px;
+}
+
+.operation p {
+    color: #68798a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ===== ORDER ===== */
+
+.order {
+    background:
+        linear-gradient(
+            rgba(4,28,50,.93),
+            rgba(4,28,50,.93)
+        ),
+        url("https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?auto=format&fit=crop&w=1800&q=85");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.order-box {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.order-box h2 {
+    text-align: center;
+    color: #06233e;
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd8e2;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+textarea {
+    min-height: 110px;
+}
+
+.total {
+    background: #eaf5fb;
+    padding: 15px;
+    border-radius: 7px;
+    margin-top: 10px;
+    color: #06233e;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.submit {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    margin-top: 18px;
+    border-radius: 6px;
+    background: #087fc5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ===== CONTACT ===== */
+
+.contact {
+    background: #f5f8fb;
+    text-align: center;
+}
+
+.contact-info {
+    color: #657587;
+    line-height: 2;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    background: #031a2d;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer p {
+    color: #b9c9d7;
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width: 850px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .operation-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 550px) {
+
+    section {
+        padding: 65px 5%;
+    }
+
+    .product-grid,
+    .operation-grid,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .btn.blue {
+        margin-left: 0;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+<a href="#home" class="logo">
+
+<div class="logo-icon">
+    PFC
+</div>
+
+<div class="logo-text">
+    <strong>PFC</strong>
+    <span>POLYTECHNIC FISHING CORPORATION</span>
+</div>
+
+</a>
+
+<div class="nav-links">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT US</a>
+    <a href="#products">PRODUCTS</a>
+    <a href="#operations">OUR OPERATIONS</a>
+    <a href="#contact">CONTACT</a>
+</div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<small>POLYTECHNIC FISHING CORPORATION</small>
+
+<h1>
+Quality Fish Products,
+Ready for You.
+</h1>
+
+<p>
+Providing fresh, frozen, canned, and fish sauce products
+through proper handling, processing, and reliable distribution.
+</p>
+
+<a href="#products" class="btn">
+Explore Our Products
+</a>
+
+<a href="#order" class="btn blue">
+Order / Inquire
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+<div class="section-title">
+
+<h2>About Us</h2>
+
+<p>
+Learn more about Polytechnic Fishing Corporation.
+</p>
+
+</div>
+
+<div class="about-container">
+
+<img
+class="about-image"
+src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?auto=format&fit=crop&w=1000&q=85"
+alt="Fishing">
+
+<div class="about-text">
+
+<h3>Polytechnic Fishing Corporation</h3>
+
+<p>
+Polytechnic Fishing Corporation (PFC) is a fishing and
+fish distribution company focused on providing quality
+fish products to customers.
+</p>
+
+<p>
+Our products cover <strong>fresh fish, frozen fish,
+canned fish, and fish sauce or patis.</strong>
+</p>
+
+<p>
+Under our product line <strong>Polytechnic Foods</strong>,
+we offer tuna-based canned fish and tuna-based fish sauce.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= VIDEO ================= -->
+
+<section class="video-section">
+
+<div class="section-title">
+
+<h2>Our Fishing Operations</h2>
+
+<p>
+Take a look at our fishing and distribution operations.
+</p>
+
+</div>
+
+<div class="video-container">
+
+<!--
+UPLOAD YOUR VIDEO TO THE SAME GITHUB REPOSITORY
+AND NAME IT:
+
+pfc-video.mp4
+-->
+
+<video controls>
+
+<source src="pfc-video.mp4" type="video/mp4">
+
+Your browser does not support video.
+
+</video>
+
+</div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products" id="products">
+
+<div class="section-title">
+
+<h2>Our Products</h2>
+
+<p>
+Polytechnic Fishing Corporation offers a range of
+fish products for customers and distribution.
+</p>
+
+</div>
+
+
+<div class="product-grid">
+
+
+<!-- FRESH FISH -->
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?auto=format&fit=crop&w=900&q=85"
+alt="Fresh Fish">
+
+<div class="product-info">
+
+<h3>Fresh Fish</h3>
+
+<p>
+Fresh fish products handled and distributed with
+proper care.
+</p>
+
+<div class="price">
+Price Upon Inquiry
+</div>
+
+</div>
+
+</div>
+
+
+<!-- YELLOWFIN -->
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=900&q=85"
+alt="Frozen Yellowfin Tuna">
+
+<div class="product-info">
+
+<h3>Frozen Yellowfin Tuna</h3>
+
+<p>
+Frozen yellowfin tuna prepared for food preparation
+and distribution.
+</p>
+
+<div class="price">
+₱260
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MACKEREL -->
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?auto=format&fit=crop&w=900&q=85"
+alt="Frozen Mackerel Tuna">
+
+<div class="product-info">
+
+<h3>Frozen Mackerel Tuna</h3>
+
+<p>
+Frozen mackerel tuna prepared for convenient storage
+and preparation.
+</p>
+
+<div class="price">
+₱240
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CANNED -->
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a?auto=format&fit=crop&w=900&q=85"
+alt="Polytechnic Canned Fish">
+
+<div class="product-info">
+
+<h3>Polytechnic Canned Fish</h3>
+
+<p>
+Tuna-based canned fish under the Polytechnic Foods
+product line.
+</p>
+
+<div class="price">
+₱50
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FISH SAUCE -->
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85"
+alt="Polytechnic Fish Sauce">
+
+<div class="product-info">
+
+<h3>Polytechnic Fish Sauce</h3>
+
+<p>
+Tuna-based fish sauce or patis under the Polytechnic
+Foods product line.
+</p>
+
+<div class="price">
+₱35
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= OPERATIONS ================= -->
+
+<section class="operations" id="operations">
+
+<div class="section-title">
+
+<h2>Our Operations</h2>
+
+<p>
+Our process from sourcing fish to product distribution.
+</p>
+
+</div>
+
+
+<div class="operation-grid">
+
+<div class="operation">
+
+<div class="number">01</div>
+
+<h3>Fishing & Sourcing</h3>
+
+<p>
+Fish are sourced through fishing operations and
+reliable sources.
+</p>
+
+</div>
+
+
+<div class="operation">
+
+<div class="number">02</div>
+
+<h3>Handling & Processing</h3>
+
+<p>
+Fish products are properly handled and processed
+according to their product type.
+</p>
+
+</div>
+
+
+<div class="operation">
+
+<div class="number">03</div>
+
+<h3>Packaging</h3>
+
+<p>
+Products are prepared and packaged for storage
+and distribution.
+</p>
+
+</div>
+
+
+<div class="operation">
+
+<div class="number">04</div>
+
+<h3>Distribution</h3>
+
+<p>
+Finished products are distributed to customers
+and retail channels.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ORDER ================= -->
+
+<section class="order" id="order">
+
+<div class="order-box">
+
+<h2>Order / Product Inquiry</h2>
+
+<form id="orderForm">
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>Full Name</label>
+
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Contact Number</label>
+
+<input
+type="text"
+id="contact"
+placeholder="Enter your contact number"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Product</label>
+
+<select id="product" required>
+
+<option value="">Select a product</option>
+
+<option value="Fresh Fish" data-price="0">
+Fresh Fish - Price Upon Inquiry
+</option>
+
+<option value="Frozen Yellowfin Tuna" data-price="260">
+Frozen Yellowfin Tuna - ₱260
+</option>
+
+<option value="Frozen Mackerel Tuna" data-price="240">
+Frozen Mackerel Tuna - ₱240
+</option>
+
+<option value="Polytechnic Canned Fish" data-price="50">
+Polytechnic Canned Fish - ₱50
+</option>
+
+<option value="Polytechnic Fish Sauce" data-price="35">
+Polytechnic Fish Sauce - ₱35
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Quantity</label>
+
+<input
+type="number"
+id="quantity"
+min="1"
+value="1"
+required>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Message / Inquiry</label>
+
+<textarea
+id="message"
+placeholder="Write your inquiry or special request..."></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="total">
+
+Estimated Total: ₱<span id="total">0</span>
+
+</div>
+
+
+<button class="submit" type="submit">
+
+SEND ORDER / INQUIRY
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+<div class="section-title">
+
+<h2>Contact Us</h2>
+
+<p>
+Have questions about our products? Send us an inquiry.
+</p>
+
+</div>
+
+<div class="contact-info">
+
+<p>
+<strong>Polytechnic Fishing Corporation</strong>
+</p>
+
+<p>
+Location: Navotas City, Philippines
+</p>
+
+<p>
+Email: polytechnicfishingcorp@gmail.com
+</p>
+
+<p>
+Phone: +63 XXX XXX XXXX
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h3>POLYTECHNIC FISHING CORPORATION</h3>
+
+<p>
+Quality fish products and reliable distribution.
+</p>
+
+<p>
+© 2026 Polytechnic Fishing Corporation. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* ================= TOTAL CALCULATOR ================= */
+
+const product =
+document.getElementById("product");
+
+const quantity =
+document.getElementById("quantity");
+
+const total =
+document.getElementById("total");
+
+
+function calculateTotal() {
+
+const selected =
+product.options[product.selectedIndex];
+
+const price =
+Number(selected.dataset.price || 0);
+
+const qty =
+Number(quantity.value || 1);
+
+total.textContent =
+(price * qty).toLocaleString();
+
+}
+
+
+product.addEventListener(
+"change",
+calculateTotal
+);
+
+quantity.addEventListener(
+"input",
+calculateTotal
+);
+
+
+/* ================= ORDER / INQUIRY ================= */
+
+document
+.getElementById("orderForm")
+.addEventListener("submit", function(event) {
+
+event.preventDefault();
+
+const name =
+document.getElementById("name").value;
+
+const contact =
+document.getElementById("contact").value;
+
+const selected =
+product.options[product.selectedIndex];
+
+const productName =
+selected.value;
+
+const qty =
+quantity.value;
+
+const message =
+document.getElementById("message").value;
+
+const estimatedTotal =
+total.textContent;
+
+
+alert(
+"Thank you, " + name +
+"!\n\n" +
+
+"Product: " + productName +
+"\nQuantity: " + qty +
+"\nEstimated Total: ₱" +
+estimatedTotal +
+
+"\n\nContact: " + contact +
+
+"\n\nYour inquiry has been received."
+);
+
+});
+
+</script>
+
+</body>
+</html>
